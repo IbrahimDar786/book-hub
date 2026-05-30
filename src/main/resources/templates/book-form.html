@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Form</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+    
+</head>
+<body>
+<div class="container mt-4">
+<h1>Add / Edit Book</h1>
+
+<form th:action="@{/books/save}" th:object="${book}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+     
+    <label class="form-label">Title:</label>
+    <input type="text" class="form-control" th:field="*{title}">
+    <span class="text-danger" th:if="${#fields.hasErrors('title')}"
+          th:errors="*{title}"></span>
+
+    <br><br>
+
+    <label class="form-label">Author:</label>
+    <input type="text" class="form-control" th:field="*{author}">
+    <span class="text-danger" th:if="${#fields.hasErrors('author')}"
+          th:errors="*{author}"></span>
+
+    <br><br>
+
+    <label class="form-label">Genre:</label>
+    <input type="text" class="form-control" th:field="*{genre}">
+    <span class="text-danger" th:if="${#fields.hasErrors('genre')}"
+          th:errors="*{genre}"></span>
+
+    <br><br>
+
+    <label class="form-label">Publisher:</label>
+    <input type="text" class="form-control" th:field="*{publisher}">
+    <span class="text-danger" th:if="${#fields.hasErrors('publisher')}"
+          th:errors="*{publisher}"></span>
+
+    <br><br>
+
+    <label class="form-label">Price:</label>
+    <input type="number" class="form-control" step="0.01" th:field="*{price}">
+    <span class="text-danger" th:if="${#fields.hasErrors('price')}"
+          th:errors="*{price}"></span>
+
+    <br><br>
+
+    <button type="submit" class="btn btn-success" >Save</button>
+
+</form>
+
+<br>
+
+<a th:href="@{/books}" class="btn btn-secondary">
+    Back to Books
+</a>
+</div>
+</body>
+</html>
